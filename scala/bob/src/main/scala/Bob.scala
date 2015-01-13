@@ -1,13 +1,20 @@
 class Bob {
+  def hey(input: String) : String = input match {
+    case Yelling()  => "Whoa, chill out!"
+    case Silence()  => "Fine. Be that way!"
+    case Question() => "Sure."
+    case _ => "Whatever."
+  }
+}
 
-  def hey(input: String) : String =
-    if(input.toUpperCase == input && input.toLowerCase() != input)
-      return "Whoa, chill out!"
-    else if(input.replaceAll("""\s+""", "").length == 0)
-      return "Fine. Be that way!"
-    else if(input.takeRight(1) == "?")
-      return "Sure."
-    else
-      return "Whatever."
+case object Yelling {
+  def unapply(input: String) = input.toUpperCase == input && input.toLowerCase() != input
+}
 
+case object Silence {
+  def unapply(input: String) = input.replaceAll("""\s+""", "").length == 0
+}
+
+case object Question {
+  def unapply(input: String) = input.endsWith("?")
 }
