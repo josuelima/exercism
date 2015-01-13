@@ -12,7 +12,7 @@ case object Yelling {
 }
 
 case object Silence {
-  def unapply(input: String) = input.replaceAll("""\s+""", "").length == 0
+  def unapply(input: String) = input.replaceAll("""\s+""", "").isEmpty
 }
 
 case object Question {
