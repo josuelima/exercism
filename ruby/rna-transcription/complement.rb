@@ -1,11 +1,12 @@
 class Complement
-  COMPLEMENTS = {'G' => 'C', 'C' => 'G', 'T' => 'A', 'A' => 'U'}
+  DNA = 'GCTA'
+  RNA = 'CGAU'
 
   def self.of_dna dna
-    dna.chars.map { |c| COMPLEMENTS[c] }.join
+    dna.tr(DNA, RNA)
   end
 
   def self.of_rna rna
-    rna.chars.map { |c| COMPLEMENTS.key(c) }.join
+    rna.tr(RNA, DNA)
   end
 end
